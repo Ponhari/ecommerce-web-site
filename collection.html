@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection - MPA Store</title>
+    <link rel="stylesheet" href="coll.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-left">
+                <button class="menu-btn">☰</button>
+                <h1 class="logo">MPA</h1>
+            </div>
+            <div class="nav-center">
+                <a href="index.html" class="nav-link">New</a>
+                <a href="collections.html" class="nav-link active">Collection</a>
+                <a href="editorial.html" class="nav-link">Editorial</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <div class="nav-right">
+                <button class="icon-btn">🔍</button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    🛍️
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="filter-bar">
+        <div class="filter-content">
+            <div class="categories">
+                <button class="category-btn active">All</button>
+                <button class="category-btn">Bags</button>
+                <button class="category-btn">Watches</button>
+                <button class="category-btn">Wallets</button>
+                <button class="category-btn">Accessories</button>
+            </div>
+            <div class="sort-filter">
+                <select class="sort-select">
+                    <option>Newest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                </select>
+                <button class="filter-btn">
+                    <span class="filter-icon">⚡</span>
+                    Filters
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="collection">
+        <div class="collection-grid">
+            <!-- Product Cards -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Minimal Tote', 245, 'Bags', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Minimal Tote</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://th.bing.com/th/id/OIP.aFtau4LVZGLeYLZvAP_y_QHaHa?w=177&h=180&c=7&r=0&o=5&pid=1.7" alt="Leather Backpack">
+                    <button class="add-btn" onclick="addToCart('Leather Backpack', 320, 'Bags', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Leather Backpack</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$320</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/f7eb/d578/9aeb4501a808/dc4058b3219b/05155303427-e1/05155303427-e1.jpg?ts=1727187666509&w=750">
+                    <button class="add-btn" onclick="addToCart('Blu jeans', 245, 'Bags', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Blue jeans/h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="data:image/jpeg;base64,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" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('White shirt', 245, 'Bags', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>White shirt</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/756f/67af/b0cd4603966e/cf9b61b91ef5/02893360712-e1/02893360712-e1.jpg?ts=1733309024220&w=393" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Zip-up wool wear', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Zip-up wool wear</h3>
+                        <p class="category">Accessories</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://th.bing.com/th/id/OIP.XfyfoEcXZJfd4ehLprdYewHaJQ?w=157&h=196&c=7&r=0&o=5&pid=1.7" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Smart watch', 245, 'Bags', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Smart watch</h3>
+                        <p class="category">Watches</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/cbf1/13cf/e5b74658984f/a8afa126be5f/08062315822-e1/08062315822-e1.jpg?ts=1728918953999&w=315" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Regular fit Jean', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Regular fit Jean</h3>
+                        <p class="category">Accessories</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/cap/r/q/x/free-gpc-2-black-cap-galaxy-premium-clothes-original-imah5upmmrcrbmgh.jpeg?q=70" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('cap', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Cap</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/4021/db57/593248d9a7a0/8be53f4ba5c3/00155290545-e1/00155290545-e1.jpg?ts=1725286294012&w=393">
+                    <button class="add-btn" onclick="addToCart('Boxy fit Parka', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Boxy fit Parka</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/1c04/fc95/523943efa34f/7ad8a4a5ad7f/04410070529-e1/04410070529-e1.jpg?ts=1728632474508&w=393" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Blazer', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Blazer</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/7258/eeff/cc08470bb7a2/3d20629ae297/05320405305-e1/05320405305-e1.jpg?ts=1724670907836&w=315" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Rain jacket', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Rain jacket</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/3359/96ea/c92d494183b3/912542451b34/12001420709-e1/12001420709-e1.jpg?ts=1727006154528&w=315" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Pointed Chelsea Boots', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Minimal Tote</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/92c4/a8b3/a2d94923b934/f174547f555a/04391400800-e1/04391400800-e1.jpg?ts=1725355672344&w=750" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Black jacket', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Black jacket</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.zara.net/assets/public/3f16/0a9b/33144c4dbba4/64364c01ccbe/12305420800-e2/12305420800-e2.jpg?ts=1722335093445&w=750" alt="Minimal Tote">
+                    <button class="add-btn" onclick="addToCart('Shoe', 245, 'Accessories', this.parentElement.querySelector('img').src)">+</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Shoe</h3>
+                        <p class="category">Bags</p>
+                    </div>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <!-- Add more product cards as needed... -->
+
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='shipping.html'">Checkout</button>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <script>
+        let cart = [];
+        let cartOpen = false;
+
+        function toggleCart() {
+            cartOpen = !cartOpen;
+            document.getElementById('cartSidebar').style.transform = cartOpen ? 'translateX(0)' : 'translateX(100%)';
+            document.getElementById('cartOverlay').style.display = cartOpen ? 'block' : 'none';
+        }
+
+        function addToCart(name, price, category, image) {
+            const item = { id: Date.now().toString(), name, price, category, image };
+            // Check for duplicates
+            const existingItem = cart.find(i => i.name === name);
+            if (existingItem) return;
+            
+            cart.push(item);
+            updateCart();
+            toggleCart(); // Open cart when item is added
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            cartCount.textContent = cart.length;
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p class="category">${item.category}</p>
+                        <p class="price">$${item.price}</p>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart('${item.id}')">×</button>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            cartTotal.textContent = `$${total}`;
+        }
+    </script>
+</body>
+</html>

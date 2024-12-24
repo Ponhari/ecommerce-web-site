@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping - MPA Store</title>
+    <link rel="stylesheet" href="shipping.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-left">
+                <button class="menu-btn">☰</button>
+                <h1 class="logo">MPA</h1>
+            </div>
+            <div class="nav-center">
+                <a href="index.html" class="nav-link">New</a>
+                <a href="collections.html" class="nav-link">Collection</a>
+                <a href="editorial.html" class="nav-link">Editorial</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <div class="nav-right">
+                <button class="icon-btn">🔍</button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    🛍️
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="shipping">
+        <h2>Shipping Information</h2>
+        <form id="shippingForm">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Shipping Address:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="postalCode">Postal Code:</label>
+                <input type="text" id="postalCode" name="postalCode" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="checkout-btn">Submit Order</button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('shippingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Optionally, add form validation or AJAX submission logic here
+            alert('Order submitted successfully!');
+            // Redirect to a thank you or order confirmation page after submission
+            window.location.href = 'thankyou.html';
+        });
+    </script>
+</body>
+</html>

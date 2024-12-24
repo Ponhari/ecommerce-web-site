@@ -1,0 +1,41 @@
+/* Basic styles for the shipping page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.shipping {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+form {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button.checkout-btn {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
